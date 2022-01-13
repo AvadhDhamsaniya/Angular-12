@@ -5915,11 +5915,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Angular12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj",
+      "projectUniqueName": "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj",
       "projectName": "DemoProjectAPI.Model",
-      "projectPath": "D:\\Projects\\Angular12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj",
+      "projectPath": "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj",
       "packagesPath": "C:\\Users\\pct205\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Angular12 Demo\\DemoProjectAPI.Model\\obj\\",
+      "outputPath": "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI.Model\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

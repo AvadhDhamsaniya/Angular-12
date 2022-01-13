@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\Angular12 Demo\\DemoProjectAPI\\DemoProjectAPI.csproj": {}
+    "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI\\DemoProjectAPI.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\Angular12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj": {
+    "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Angular12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj",
+        "projectUniqueName": "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj",
         "projectName": "DemoProjectAPI.Model",
-        "projectPath": "D:\\Projects\\Angular12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj",
+        "projectPath": "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj",
         "packagesPath": "C:\\Users\\pct205\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Angular12 Demo\\DemoProjectAPI.Model\\obj\\",
+        "outputPath": "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -84,14 +84,14 @@
         }
       }
     },
-    "D:\\Projects\\Angular12 Demo\\DemoProjectAPI\\DemoProjectAPI.csproj": {
+    "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI\\DemoProjectAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Angular12 Demo\\DemoProjectAPI\\DemoProjectAPI.csproj",
+        "projectUniqueName": "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI\\DemoProjectAPI.csproj",
         "projectName": "DemoProjectAPI",
-        "projectPath": "D:\\Projects\\Angular12 Demo\\DemoProjectAPI\\DemoProjectAPI.csproj",
+        "projectPath": "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI\\DemoProjectAPI.csproj",
         "packagesPath": "C:\\Users\\pct205\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Angular12 Demo\\DemoProjectAPI\\obj\\",
+        "outputPath": "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -112,8 +112,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Projects\\Angular12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj": {
-                "projectPath": "D:\\Projects\\Angular12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj"
+              "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj": {
+                "projectPath": "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj"
               }
             }
           }

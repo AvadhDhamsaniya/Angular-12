@@ -8986,11 +8986,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Angular12 Demo\\DemoProjectAPI.Auth\\DemoProjectAPI.Auth.csproj",
+      "projectUniqueName": "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI.Auth\\DemoProjectAPI.Auth.csproj",
       "projectName": "DemoProjectAPI.Auth",
-      "projectPath": "D:\\Projects\\Angular12 Demo\\DemoProjectAPI.Auth\\DemoProjectAPI.Auth.csproj",
+      "projectPath": "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI.Auth\\DemoProjectAPI.Auth.csproj",
       "packagesPath": "C:\\Users\\pct205\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Angular12 Demo\\DemoProjectAPI.Auth\\obj\\",
+      "outputPath": "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI.Auth\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -9011,8 +9011,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\Projects\\Angular12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj": {
-              "projectPath": "D:\\Projects\\Angular12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj"
+            "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj": {
+              "projectPath": "D:\\Projects\\Angular 12 Demo\\DemoProjectAPI.Model\\DemoProjectAPI.Model.csproj"
             }
           }
         }
