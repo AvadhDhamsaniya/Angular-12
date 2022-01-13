@@ -1,0 +1,28 @@
+<div layout="row" layout-margin>
+    <div class="table-box">
+        <div style="margin-bottom: 1%;">
+            <!-- <mat-form-field>
+                <mat-label>Category</mat-label>
+                <mat-select #CategoryId (selectionChange)="onCategoryChange($event.value)">
+                    <mat-option [value]="0">All</mat-option>
+                    <mat-option *ngFor="let category of categoryList" [value]="category.id">
+                        {{category.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field> -->
+            <mat-form-field style="width: 30%;">
+                <input matInput [(ngModel)]="searchText" placeholder="Search" autocomplete="off"
+                    (keyup)="applySearch()">
+                <button mat-button matSuffix mat-icon-button (click)="clearSearch()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+            <button mat-fab color="primary" class="primary-button" (click)="addProduct()" title="Add product">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+
+        <app-table [tableConfig]="tableConfig">
+        </app-table>
+    </div>
+</div>

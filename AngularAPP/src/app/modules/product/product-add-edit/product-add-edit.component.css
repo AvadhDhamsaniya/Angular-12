@@ -1,0 +1,16 @@
+.example-card {
+  max-width: 50%;
+}
+
+mat-card{
+    margin-left:auto;
+    margin-right:auto;  
+}
+
+.item{
+    width:100%;
+    margin-right:5px;
+}
+.mat-card-header {
+    display: block;
+}

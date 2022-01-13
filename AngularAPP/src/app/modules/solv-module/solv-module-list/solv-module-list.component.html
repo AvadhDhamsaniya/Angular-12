@@ -1,0 +1,59 @@
+<div layout="row" layout-margin>
+    <div class="table-box">
+        <div style="margin-bottom: 1%;">
+            <mat-form-field style="width: 30%;">
+                <input matInput [(ngModel)]="searchText" placeholder="Search" autocomplete="off">
+                <button mat-button matSuffix mat-icon-button (click)="clearSearch()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+            <button mat-fab color="primary" class="primary-button" (click)="addModule()" title="Add module">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+
+        <div class="module-list">
+            <div class="row">
+                <ng-container *ngFor="let module of moduleList | filter:searchText">
+                    <div class="col-md-3 col-sm-4 mb-20">
+                        <div fxFlex class="card" style="background-color: rgb(76, 197, 255)">
+                            <div fxFill fxLayout="row" fxLayout.xs="column" fxLayout.md="column" fxLayoutGap="20px">
+                                <div fxFill fxLayout="column">
+                                    <div fxFlex="70" fxFill fxLayout="row">
+                                        <div fxFlex="20">
+                                            <mat-icon>{{module.icon}}</mat-icon>
+                                        </div>
+                                        <div fxFlex>
+                                            <div fxFill fxLayout="column" class="details ml-25">
+                                                <p>{{module.name}}</p>
+                                                <p>({{module.prefix | uppercase}})</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div fxFlex="30" fxFill fxLayout="row" class="action">
+                                        <div fxFlex="20">
+                                            <a (click)="editModule(module.id)">Manage</a>
+                                        </div>
+                                        <div fxFlex="30" style="text-align: end;">
+                                            <a (click)="deleteModule(module.id)">
+                                                <mat-icon class="delete" style="margin-top:-3px" title="Delete Module">
+                                                    delete</mat-icon>
+                                            </a>
+                                        </div>
+                                        <div fxFlex style="text-align: end;">
+                                            <mat-slide-toggle [checked]="module.isActive ? 'checked' : null"
+                                                name="module.id" (change)="toggleModuleActiveness(module.id, $event)"
+                                                style="margin-top:-3px">
+                                                Active
+                                            </mat-slide-toggle>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

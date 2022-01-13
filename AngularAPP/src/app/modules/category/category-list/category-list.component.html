@@ -1,0 +1,13 @@
+<div layout="row" layout-margin>
+    <div class="table-box">
+        <div>
+            <button mat-fab color="primary" class="primary-button" (click)="addCategory()" title="Add product"
+                style="margin-bottom: 1% !important;">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+
+        <app-table [tableConfig]="tableConfig">
+        </app-table>
+    </div>
+</div>

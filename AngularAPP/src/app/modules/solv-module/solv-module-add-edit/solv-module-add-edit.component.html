@@ -1,0 +1,82 @@
+<mat-dialog-content>
+    <mat-toolbar color="primary">
+        <span class="fill-remaining-space text-center">{{title}}</span>
+    </mat-toolbar>
+
+    <div class="container" novalidate>
+        <form [formGroup]="moduleFormGroup" (ngSubmit)="onSubmit()" class="form" #moduleForm="ngForm">
+
+            <div fxLayout>
+                <div class="item" style="margin-right: 5%;">
+                    <mat-form-field class="form-element">
+                        <input matInput placeholder="Module Prefix" formControlName="prefix" name="Prefix"
+                            autocomplete="off">
+                        <mat-error *ngIf="moduleFormGroup.hasError('required','prefix')">
+                            Please enter prefix
+                        </mat-error>
+                        <mat-error *ngIf="moduleFormGroup.hasError('maxlength','prefix')">
+                            Please enter valid prefix
+                        </mat-error>
+
+                    </mat-form-field>
+                </div>
+                <div class="item">
+                    <mat-form-field class="form-element">
+                        <input matInput placeholder="Module Name" formControlName="name" name="Name" autocomplete="off">
+                        <mat-error *ngIf="moduleFormGroup.controls['name'].invalid">
+                            Please enter name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div fxLayout>
+                <div class="item" style="margin-right: 5%;">
+                    <input type="hidden" formControlName="icon" name="Icon" #icon>
+                    <div class="container">
+                        <div id="content">
+                            <div id="main-content">
+                                <button type="button" #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd"
+                                    (click)="reloadIcons()">
+                                    <mat-icon>{{icon.value}}</mat-icon>
+                                    <mat-icon>arrow_drop_down</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <mat-menu #dd="matMenu" [overlapTrigger]="false">
+                        <div (click)="cancelClick($event)" class="dropdown">
+                            <mat-form-field class="form-element" style="padding-bottom: 0px;">
+                                <input matInput placeholder="Search icons" [(ngModel)]="searchIconText"
+                                    [ngModelOptions]="{standalone: true}" (keyup)="searchIcon()" />
+                            </mat-form-field>
+
+                            <ng-container *ngFor="let icon of iconList">
+                                <button class="mr-5 mb-5" (click)="onSelectIcon(icon)">
+                                    <mat-icon [title]="icon">{{icon}}</mat-icon>
+                                </button>
+                            </ng-container>
+
+                            <ng-container *ngIf="iconList.length == 0">
+                                <span>No records found.</span>
+                            </ng-container>
+                        </div>
+                    </mat-menu>
+                </div>
+                <div class="item table-box">
+                    <mat-slide-toggle formControlName="isActive" name="active" color="primary">Active</mat-slide-toggle>
+                </div>
+            </div>
+
+            <input type="hidden" formControlName="id" name="Id">
+
+            <div class="form-element" style="margin-top: 15px;">
+                <button mat-raised-button color="primary" type="submit" class="button btn-primary"
+                    [disabled]="moduleFormGroup.invalid">{{submitBtnText}}</button>
+                <button mat-raised-button color="danger" type="button" class="button btn-secondary"
+                    (click)="goToModuleList(true)">Cancel</button>
+            </div>
+        </form>
+    </div>
+</mat-dialog-content>

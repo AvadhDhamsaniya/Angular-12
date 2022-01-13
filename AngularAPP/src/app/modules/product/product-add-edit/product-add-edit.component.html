@@ -1,0 +1,151 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>
+            <mat-toolbar color="primary">
+                <span class="fill-remaining-space text-center">{{title}}</span>
+            </mat-toolbar>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="container" novalidate>
+            <form [formGroup]="productFormGroup" (ngSubmit)="onSubmit()" class="form" #productForm="ngForm">
+
+                <div fxLayout>
+                    <div class="item" style="margin-top: 12px;margin-right: 5%;">
+                        <mat-form-field class="form-element">
+                            <input matInput placeholder="Product Name" formControlName="name" name="Name"
+                                autocomplete="off">
+                            <mat-error *ngIf="productFormGroup.controls['name'].invalid">
+                                Please enter name
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="item">
+                        <mat-form-field class="form-element" appearance="standard">
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="date" name="Date"
+                                autocomplete="off">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="productFormGroup.controls['date'].invalid">
+                                Please enter date
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxLayout>
+                    <div class="item" style="margin-right: 5%">
+                        <mat-form-field class="form-element">
+                            <mat-label>Category</mat-label>
+                            <mat-select formControlName="categoryId" name="CategoryId">
+                                <mat-option *ngFor="let category of categoryList" [value]="category.id">
+                                    {{category.name}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="productFormGroup.controls['categoryId'].invalid">
+                                Please enter category
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="item">
+                        <mat-form-field class="form-element">
+                            <input type="number" matInput placeholder="Stock" formControlName="stock" name="Stock"
+                                autocomplete="off">
+                            <mat-error *ngIf="productFormGroup.hasError('required','stock')">
+                                Please enter stock
+                            </mat-error>
+                            <mat-error *ngIf="productFormGroup.hasError('pattern','stock')">
+                                Please enter valid stock
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxLayout>
+                    <div class="item" style="margin-right: 5%">
+                        <mat-form-field class="form-element">
+                            <input type="number" matInput placeholder="Weight" formControlName="weight" name="Weight"
+                                autocomplete="off">
+                            <mat-error *ngIf="productFormGroup.hasError('required','weight')">
+                                Please enter weight
+                            </mat-error>
+                            <mat-error *ngIf="productFormGroup.hasError('pattern','weight')">
+                                Please enter valid weight
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="item">
+                        <mat-form-field class="form-element">
+                            <input type="number" matInput placeholder="Price" formControlName="price" name="Price"
+                                autocomplete="off">
+                            <mat-error *ngIf="productFormGroup.hasError('required','price')">
+                                Please enter price
+                            </mat-error>
+                            <mat-error *ngIf="productFormGroup.hasError('pattern','price')">
+                                Please enter valid price
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxLayout>
+                    <div class="item" style="margin-right: 5%">
+                        <div class="form-element">
+                            <mat-form-field class="form-element">
+                                <textarea matInput placeholder="Description" formControlName="description"
+                                    matTextareaAutosize rows="10" matAutosizeMinRows="5" matAutosizeMaxRows="5"
+                                    name="Description" autocomplete="off"></textarea>
+                                <mat-error *ngIf="productFormGroup.hasError('required','description')">
+                                    Please enter description
+                                </mat-error>
+                                <mat-error *ngIf="productFormGroup.hasError('maxlength','description')">
+                                    Description should not has more than 300 character.
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="form-element">
+                            <ngx-dropzone (change)="onSelect($event)" [multiple]="false"
+                                accept="image/jpeg,image/jpg,image/png,image/gif" style="justify-content: center;">
+                                <ngx-dropzone-label>
+                                    <div>
+                                        <p>
+                                            <mat-icon style="width: unset;font-size: 60px;">cloud_upload</mat-icon>
+                                        </p>
+                                        <p>Drag and Drop OR Select Image</p>
+                                    </div>
+                                </ngx-dropzone-label>
+                                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files"
+                                    [file]="f" [removable]="true" (removed)="onRemove(f)">
+                                </ngx-dropzone-image-preview>
+                            </ngx-dropzone>
+                            <input type="hidden" formControlName="imageSource" name="ImageSource">
+                        </div>
+                    </div>
+                </div>
+
+                <div fxLayout>
+                    <div class="item">
+                        <div class="form-element">
+                            <mat-checkbox color="primary" #tcCheck formControlName="tcCheck" name="TcCheck">Please read
+                                Terms and conditions
+                            </mat-checkbox>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" formControlName="id" name="Id">
+
+                <div class="form-element">
+                    <div class="example-button-row">
+                        <button mat-raised-button color="primary" type="submit" class="button btn-primary"
+                            [disabled]="productFormGroup.invalid || !tcCheck.checked">{{submitBtnText}}</button>
+                        <button mat-raised-button color="danger" type="button" class="button btn-secondary"
+                            (click)="goToProductList()">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>

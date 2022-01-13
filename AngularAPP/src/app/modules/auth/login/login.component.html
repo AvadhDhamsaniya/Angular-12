@@ -1,0 +1,50 @@
+<mat-card class="example-card" style="margin-top: 100px;" fxFlex>
+    <mat-card-header>
+        <mat-card-title>
+            <mat-toolbar color="primary">
+                <span class="fill-remaining-space text-center">Login</span>
+            </mat-toolbar>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="container" novalidate>
+            <form [formGroup]="loginFormGroup" (ngSubmit)="onSubmit()" class="form" #loginForm="ngForm">
+
+                <div fxLayout>
+                    <div class="item" style="margin-top: 12px;margin-right: 5%;">
+                        <mat-form-field class="form-element">
+                            <input matInput placeholder="Username" formControlName="username" name="Name"
+                                autocomplete="off">
+                            <mat-error *ngIf="loginFormGroup.controls['username'].invalid">
+                                Please enter username
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxLayout>
+                    <div class="item" style="margin-top: 12px;margin-right: 5%;">
+                        <mat-form-field class="form-element">
+                            <input matInput placeholder="Password" formControlName="password" name="Name"
+                                type="password" autocomplete="off">
+                            <mat-error *ngIf="loginFormGroup.controls['password'].invalid">
+                                Please enter password
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-element">
+                    <div class="example-button-row">
+                        <button mat-raised-button color="primary" type="button" class="button btn-primary"
+                            [disabled]="loginFormGroup.invalid" (click)="onSubmit()">Sign In</button>
+                    </div>
+                </div>
+                <div class="form-element">
+                    <div class="example-button-row text-center">
+                        Don't have an account?
+                        <a class="sign-up" [routerLink]="['/auth/register']">Sign Up</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>

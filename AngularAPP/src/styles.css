@@ -1,0 +1,108 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.text-center{
+        text-align: center;
+}
+
+
+/* tr.mat-row:hover {
+      background-color: #673ab785;
+  } */
+
+.primary-button{
+    float: right;
+    margin:0px 16px !important;
+}
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+.container {
+  padding: 10px;
+}
+
+
+.form-element {
+  padding: 5px 0px 25px 2px;
+  width: 100%;
+}
+
+.button {
+  width: 100%;
+}
+
+.section-container{
+    margin-left: 36%;
+    width:30%;
+}
+
+.btn-primary {
+  width: 48%;
+  margin-right: 5px !important;
+}
+
+.btn-secondary{
+  width: 48%;
+  margin-left: 5px !important;
+}
+
+.mat-error{
+  font-size: 16px;
+}
+
+.success{
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+
+.error{
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
+.table-box{
+  margin:2%;
+  margin-left: 6%;
+  margin-right: 6%;
+}
+
+.pt-10{
+  padding-top: 10px !important;
+}
+
+.pb-10{
+  padding-bottom: 10px !important;
+}
+
+.mr-5{
+  margin-right: 5px;
+}
+
+.mb-5{
+  margin-bottom: 5px;
+}
+
+.mb-20{
+  margin-bottom: 20px;
+}
+
+.m-10{
+    margin:10px;
+}
+
+.mt-10{
+    margin-top:10px;
+}
+
+.ml-10{
+  margin-left: 10px;
+}
+
+.ml-25{
+  margin-left: 25px;
+}

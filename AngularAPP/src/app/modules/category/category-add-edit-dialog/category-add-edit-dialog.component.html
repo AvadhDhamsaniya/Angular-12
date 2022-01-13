@@ -1,0 +1,36 @@
+<mat-dialog-content>
+    <mat-toolbar color="primary">
+        <span class="fill-remaining-space text-center">{{title}}</span>
+    </mat-toolbar>
+
+    <div class="container" novalidate>
+        <form [formGroup]="categoryFormGroup" (ngSubmit)="onSubmit()" class="form" #productForm="ngForm">
+
+            <mat-form-field class="form-element">
+                <input matInput placeholder="Category Name" formControlName="name" name="Name" autocomplete="off">
+                <mat-error *ngIf="categoryFormGroup.controls['name'].invalid">
+                    Please enter name
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-element">
+                <textarea matInput placeholder="Description" formControlName="description" matTextareaAutosize rows="5"
+                    matAutosizeMinRows="5" matAutosizeMaxRows="5" name="Description" autocomplete="off"></textarea>
+                <mat-error *ngIf="categoryFormGroup.hasError('maxlength','description')">
+                    Description should not has more than 300 character.
+                </mat-error>
+            </mat-form-field>
+
+            <input type="hidden" formControlName="id" name="Id">
+
+            <div class="form-element" style="margin-top: 15px;">
+                <div class="example-button-row">
+                    <button mat-raised-button color="primary" type="submit" class="button btn-primary"
+                        [disabled]="categoryFormGroup.invalid">{{submitBtnText}}</button>
+                    <button mat-raised-button color="danger" type="button" class="button btn-secondary"
+                        (click)="goToCategoryList('')">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</mat-dialog-content>

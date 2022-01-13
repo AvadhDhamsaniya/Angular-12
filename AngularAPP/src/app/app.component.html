@@ -1,0 +1,6 @@
+<app-toolbar *ngIf="isLoggedIn | async"></app-toolbar>
+
+<div class="overlay" *ngIf="loader | async">
+    <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+</div>
+<router-outlet></router-outlet>

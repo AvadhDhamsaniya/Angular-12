@@ -1,0 +1,9 @@
+.item{
+    width:100%;
+    margin-right:5px;
+}
+
+.mat-menu-panel{
+    padding:15px;
+    height: 245px;
+}

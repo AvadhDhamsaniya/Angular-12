@@ -1,0 +1,27 @@
+.example-card {
+  max-width: 30%;
+}
+
+mat-card{
+    margin-left:auto;
+    margin-right:auto;  
+}
+
+.item{
+    width:100%;
+    margin-right:5px;
+}
+.mat-card-header {
+    display: block;
+}
+
+.btn-primary{
+    width: 100%;
+}
+
+.sign-up{
+    color: #673ab7;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+}
