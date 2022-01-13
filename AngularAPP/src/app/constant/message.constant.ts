@@ -3,6 +3,5 @@ export const MessageConstant = {
     Update: "{0} updated successfully.",
     DeleteConfirmation: "Are you sure you want to delete?",
     Delete: "{0} successfully deleted.",
-    SomethingWentWrong: "Something went wrong.",
-    test: ""
+    SomethingWentWrong: "Something went wrong."
 }
