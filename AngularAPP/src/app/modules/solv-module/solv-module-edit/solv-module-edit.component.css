@@ -1,0 +1,35 @@
+.panel-heading{
+    border-bottom: 1px solid #c9caed;
+    color:#929292;
+}
+
+.panel-heading h2{
+    margin-bottom: 8px;
+}
+
+.container-custom{
+  padding: 20px;
+  border: 1px solid #673ab7;
+  margin: 20px;
+  border-radius: 6px;
+}
+
+.item{
+    width:100%;
+    margin-right:5px;
+}
+
+.mat-menu-panel{
+    padding:15px;
+    height: 245px;
+}
+
+@media screen and (max-width: 991px) {
+    .form-element {
+        padding: 10px 0px 10px 0px !important;
+    }
+}
+
+.form-element {
+    padding: 0px;
+}

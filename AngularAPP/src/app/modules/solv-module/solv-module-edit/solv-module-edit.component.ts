@@ -1,20 +1,21 @@
-import { Component, ElementRef, Inject, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
 import { SolvModuleService } from 'src/app/services/solv-module.service';
 
 @Component({
-  selector: 'app-solv-module-add-edit',
-  templateUrl: './solv-module-add-edit.component.html',
-  styleUrls: ['./solv-module-add-edit.component.css'],
+  selector: 'app-solv-module-edit',
+  templateUrl: './solv-module-edit.component.html',
+  styleUrls: ['./solv-module-edit.component.css',
+    '../../../../styles/bootstrap.css',
+    '../../../../styles/bootstrap-theme.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class SolvModuleAddEditComponent implements OnInit {
+export class SolvModuleEditComponent implements OnInit {
 
-  title: string = "Add Module";
-  submitBtnText: string = "Add";
+  moduleId: number = 0;
   iconList: string[] = [];
   searchIconText: string = "";
   moduleFormGroup = new FormGroup(
@@ -30,20 +31,17 @@ export class SolvModuleAddEditComponent implements OnInit {
   @ViewChild(MatMenuTrigger) ddTrigger!: MatMenuTrigger;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<SolvModuleAddEditComponent>,
     private commonService: CommonService,
+    private activatedRoute: ActivatedRoute,
     private solvModuleService: SolvModuleService,
-    private el: ElementRef
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.moduleId = parseInt(this.activatedRoute.snapshot.paramMap.get("id") || "0");
     this.reloadIcons();
-    var moduleId = this.data.id;
-    if (moduleId !== 0) {
-      this.title = "Edit Module";
-      this.submitBtnText = "Update";
-      this.solvModuleService.getModule(moduleId).subscribe(
+    if (this.moduleId !== 0) {
+      this.solvModuleService.getModule(this.moduleId).subscribe(
         (data) => {
           this.moduleFormGroup.patchValue(data);
         });
@@ -51,6 +49,24 @@ export class SolvModuleAddEditComponent implements OnInit {
     else {
       this.moduleFormGroup.controls["icon"].setValue(this.iconList[0]);
     }
+  }
+
+  searchIcon() {
+    this.iconList = this.commonService.getMatIconList().filter(icon => icon.indexOf(this.searchIconText) >= 0);
+  }
+
+  onSelectIcon(icon: string) {
+    this.moduleFormGroup.controls["icon"].setValue(icon);
+    this.ddTrigger.closeMenu();
+  }
+
+  reloadIcons() {
+    this.searchIconText = "";
+    this.iconList = this.commonService.getMatIconList();
+  }
+
+  cancelClick(event: any) {
+    event.stopPropagation();
   }
 
   onSubmit() {
@@ -75,24 +91,6 @@ export class SolvModuleAddEditComponent implements OnInit {
   }
 
   goToModuleList(res: any) {
-    this.dialogRef.close(res);
-  }
-
-  searchIcon() {
-    this.iconList = this.commonService.getMatIconList().filter(icon => icon.indexOf(this.searchIconText) >= 0);
-  }
-
-  cancelClick(event: any) {
-    event.stopPropagation();
-  }
-
-  onSelectIcon(icon: string) {
-    this.moduleFormGroup.controls["icon"].setValue(icon);
-    this.ddTrigger.closeMenu();
-  }
-
-  reloadIcons() {
-    this.searchIconText = "";
-    this.iconList = this.commonService.getMatIconList();
+    this.router.navigateByUrl("/module");
   }
 }

@@ -4,15 +4,17 @@ import { SolvModuleRoutingModule } from './solv-module-routing.module';
 import { SolvModuleComponent } from './solv-module-list/solv-module-list.component';
 import { MaterialsModule } from '../materials/materials.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SolvModuleAddEditComponent } from './solv-module-add-edit/solv-module-add-edit.component';
+import { SolvModuleAddComponent } from './solv-module-add/solv-module-add.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatMenuModule } from '@angular/material/menu';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SolvModuleEditComponent } from './solv-module-edit/solv-module-edit.component';
 
 @NgModule({
   declarations: [
     SolvModuleComponent,
-    SolvModuleAddEditComponent
+    SolvModuleAddComponent,
+    SolvModuleEditComponent
   ],
   imports: [
     CommonModule,

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { MessageConstant } from 'src/app/constant/message.constant';
 import { ModuleClass } from 'src/app/model/module';
 import { CommonService } from 'src/app/services/common.service';
 import { SolvModuleService } from 'src/app/services/solv-module.service';
 import { ConfirmDialogComponent } from '../../common/confirm-dialog/confirm-dialog.component';
-import { SolvModuleAddEditComponent } from '../solv-module-add-edit/solv-module-add-edit.component';
+import { SolvModuleAddComponent } from '../solv-module-add/solv-module-add.component';
 
 @Component({
   selector: 'app-solv-module',
@@ -23,7 +24,8 @@ export class SolvModuleComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private commonServices: CommonService,
-    private moduleService: SolvModuleService
+    private moduleService: SolvModuleService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -56,11 +58,12 @@ export class SolvModuleComponent implements OnInit {
   }
 
   editModule(id: any) {
-    this.openAddEditDialog(id);
+    this.router.navigateByUrl("module/edit/" + id);
+    //this.openAddEditDialog(id);
   }
 
   openAddEditDialog(id: any) {
-    let dialogRef = this.dialog.open(SolvModuleAddEditComponent, {
+    let dialogRef = this.dialog.open(SolvModuleAddComponent, {
       data: { id },
       width: '800px',
       height: '380px'

@@ -106,3 +106,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .ml-25{
   margin-left: 25px;
 }
+
+.p-20{
+  padding: 20px;
+}
+
+.m-20{
+  margin: 20px;
+}
+
