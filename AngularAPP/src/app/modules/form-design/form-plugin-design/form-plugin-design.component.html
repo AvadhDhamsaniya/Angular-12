@@ -1,0 +1,6 @@
+<ng-container *ngIf="plugin.type=='Text'">
+    <input class="custom-form-control" placeholder="{{plugin.label}}" autocomplete="off">
+</ng-container>
+<ng-container *ngIf="plugin.type=='Textarea'">
+    <textarea row="2" class="custom-form-control" placeholder="{{plugin.label}}" autocomplete="off"></textarea>
+</ng-container>

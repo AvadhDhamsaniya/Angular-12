@@ -13,6 +13,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CommonModule } from '@angular/common';
+import { PipeModule } from './pipe/pipe.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
       }
     }),
     NgxDropzoneModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    CommonModule,
+    PipeModule
   ],
   exports: [MaterialsModule],
   providers: [{

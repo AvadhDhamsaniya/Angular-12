@@ -31,6 +31,12 @@ const routes: Routes = [
     loadChildren: () => import('./modules/solv-module/solv-module.module')
       .then(mod => mod.SolvModuleModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: "form",
+    loadChildren: () => import('./modules/form-design/form-design.module')
+      .then(mod => mod.FormDesignModule),
+    canActivate: [AuthGuard]
   }
 ];
 

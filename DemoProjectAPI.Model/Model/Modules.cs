@@ -18,5 +18,7 @@ namespace DemoProjectAPI.Model.Model
         public string Icon { get; set; }
 
         public bool IsActive { get; set; }
+
+        public ICollection<FormDesigns> FormDesigns { get; set; }
     }
 }

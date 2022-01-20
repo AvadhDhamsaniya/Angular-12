@@ -41,12 +41,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width:30%;
 }
 
-.btn-primary {
+.btn-custom-primary {
   width: 48%;
   margin-right: 5px !important;
 }
 
-.btn-secondary{
+.btn-custom-secondary{
   width: 48%;
   margin-left: 5px !important;
 }
@@ -99,6 +99,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-top:10px;
 }
 
+.mt-20{
+    margin-top:20px !important;
+}
+
 .ml-10{
   margin-left: 10px;
 }
@@ -115,3 +119,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin: 20px;
 }
 
+.text-end{
+  text-align: end;
+}
+
+.p-10{
+  padding: 10px;
+}

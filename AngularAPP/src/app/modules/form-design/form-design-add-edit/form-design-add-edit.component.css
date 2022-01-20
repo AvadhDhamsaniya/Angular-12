@@ -1,0 +1,69 @@
+.container-custom{
+  padding: 20px;
+  border: 1px solid #673ab7;
+  margin: 20px;
+  border-radius: 6px;
+  min-height: 600px;
+  max-height: 600px;
+  overflow: auto;
+}
+
+.btn-custom-primary,.btn-custom-secondary{
+    line-height: 36px;
+    width:auto;
+}
+
+::ng-deep .mat-tab-label{
+    font-weight: 700;
+}
+
+.btn-custom-poly{
+    background-color: white;
+    color: #673ab7;
+    border: 2px solid #673ab7;
+    line-height: 36px;
+    width: 250px;
+}
+
+::ng-deep .custom-form-control{
+    display: block;
+    width: 90%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+:host ::ng-deep json-editor,
+:host ::ng-deep json-editor .jsoneditor,
+:host ::ng-deep json-editor > div,
+:host ::ng-deep json-editor .jsoneditor-outer {
+  height: 500px;
+}
+
+textarea.jsoneditor-text{min-height:350px;}
+
+::ng-deep .custom-json-editor .mat-tab-body-content{
+    height: 502px;
+}
+
+::ng-deep .custom-json-editor .mat-tab-label{
+    width:100%;
+}
+
+.icon-cursor-move{
+    cursor: pointer;
+}
+
+.icon-cursor-move .mat-icon{
+    float: left;
+}
+
+.selected-field{
+    background-color: #ccb0ff
+}

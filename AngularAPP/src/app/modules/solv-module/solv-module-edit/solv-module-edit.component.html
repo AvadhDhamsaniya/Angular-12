@@ -65,11 +65,59 @@
                     </mat-slide-toggle>
                 </div>
             </div>
+
+            <br />
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <h2>Templates</h2>
+                    </div>
+                    <div class="col-xs-8  text-end">
+                        <button mat-raised-button color="primary" type="button" class="button btn-custom-primary"
+                            style="width:0%;" (click)="addNewForm()">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 mb-20">
+                <div style="border: 2px solid #dddddd">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th scope="col">Template</th>
+                                <th scope="col">Status</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let formDesign of formDesignList">
+                                <tr>
+                                    <td>{{formDesign.formName}}</td>
+                                    <td>{{formDesign.isDraft ? "InActive":"Active"}}</td>
+                                    <td class="text-end">
+                                        <a class="mr-5">
+                                            <mat-icon class="delete" style="margin-top:-3px" title="Edit Module">
+                                                edit</mat-icon>
+                                        </a>
+                                        <a class="mr-5">
+                                            <mat-icon class="delete" style="margin-top:-3px" title="Edit Module">
+                                                delete</mat-icon>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
             <div class="row">
-                <div class="col-md-12">
-                    <button mat-raised-button color="primary" type="submit" class="button btn-primary"
+                <div class="col-md-12 text-center">
+                    <button mat-raised-button color="primary" type="submit" class="button btn-custom-primary"
                         [disabled]="moduleFormGroup.invalid">Save</button>
-                    <button mat-raised-button color="danger" type="button" class="button btn-secondary"
+                    <button mat-raised-button color="danger" type="button" class="button btn-custom-secondary"
                         (click)="goToModuleList(false)">Cancel</button>
                 </div>
             </div>

@@ -1,0 +1,26 @@
+[
+    {
+        "type": "Text",
+        "label": "Text",
+        "icon": "short_text",
+        "reportingLabel": "Text",
+        "placeholder": "",
+        "displayName": "Text",
+        "bind": "text",
+        "required": false,
+        "prePopulate": false,
+        "hasDefaultValue": false
+    },
+    {
+        "type": "Textarea",
+        "label": "Textarea",
+        "icon": "text_fields",
+        "reportingLabel": "Textarea",
+        "placeholder": "",
+        "displayName": "Textarea",
+        "bind": "textarea",
+        "required": false,
+        "prePopulate": false,
+        "hasDefaultValue": true
+    }
+]

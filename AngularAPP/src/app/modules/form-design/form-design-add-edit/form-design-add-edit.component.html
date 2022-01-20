@@ -1,0 +1,92 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="container-custom">
+                <mat-tab-group class="custom-json-editor" (selectedTabChange)="toggleDesignerEditor($event)">
+                    <mat-tab label="Designer">
+                        <div cdkDropList #doneList="cdkDropList" [cdkDropListConnectedTo]="[todoList]"
+                            class="example-list" (cdkDropListDropped)="drop($event)">
+                            <ng-container *ngFor="let plugin of designData">
+                                <div class="mt-20 mb-20 p-10 icon-cursor-move"
+                                    [ngClass]="{'selected-field':plugin == selectedField}"
+                                    (click)="onSelectField(plugin)">
+                                    <mat-icon>drag_indicator</mat-icon>
+                                    <app-form-plugin-design [data]="plugin">
+                                    </app-form-plugin-design>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Editor">
+                        <json-editor [options]="jsonEditorOptions" [data]="designData"></json-editor>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="container-custom">
+                <div>
+                    <button mat-raised-button color="primary" type="button" class="button btn-custom-primary"
+                        (click)="saveFormDesign(false)">Save</button>
+                    <button mat-raised-button color="primary" type="button" class="button btn-custom-primary"
+                        (click)="saveFormDesign(true)">Save As
+                        Draft</button>
+                    <button mat-raised-button color="danger" type="button" class="button btn-custom-secondary"
+                        (click)="goToModuleDetail()">Cancel</button>
+                </div>
+                <div class="mt-20">
+                    <mat-tab-group [(selectedIndex)]="propertyIndex">
+                        <mat-tab label="Element">
+                            <div class="container-fluid mt-20">
+                                <div class="row">
+                                    <div cdkDropList #todoList="cdkDropList" [cdkDropListConnectedTo]="[doneList]"
+                                        class="example-list" (cdkDropListDropped)="drop($event)">
+                                        <ng-container *ngFor="let element of elements">
+                                            <div class="col-md-6" cdkDrag [cdkDragData]="element">
+                                                <button mat-raised-button color="primary" type="button"
+                                                    class="button btn-custom-poly">
+                                                    <mat-icon>{{element.icon}}</mat-icon> {{element.label}}
+                                                </button>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Properties">
+                            <ng-container *ngIf="selectedField != null">
+                                <form [formGroup]="propertyFormGroup" class="form" #propertyForm="ngForm">
+                                    <div class="mt-10">
+                                        <mat-form-field class="form-element pb-10">
+                                            <input matInput placeholder="Form Label" formControlName="label"
+                                                name="formLabel" autocomplete="off" (keyup)="onChangeFieldProperties()">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="mt-10">
+                                        <mat-form-field class="form-element pb-10">
+                                            <input matInput placeholder="Reporting Label"
+                                                formControlName="reportingLabel" name="reportingLabel"
+                                                autocomplete="off" (keyup)="onChangeFieldProperties()">
+                                        </mat-form-field>
+                                    </div>
+                                </form>
+                            </ng-container>
+                            <ng-container *ngIf="selectedField == null">
+                                <h3 class="mt-20 text-center">Select an element to begin</h3>
+                            </ng-container>
+
+                        </mat-tab>
+                        <mat-tab label="Form Properties">
+                            <div class="mt-10">
+                                <mat-form-field class="form-element">
+                                    <input matInput placeholder="Form name" [(ngModel)]="formName" name="formName"
+                                        autocomplete="off">
+                                </mat-form-field>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

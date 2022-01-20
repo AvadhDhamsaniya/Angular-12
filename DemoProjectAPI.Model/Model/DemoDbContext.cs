@@ -13,5 +13,6 @@ namespace DemoProjectAPI.Model
         public virtual DbSet<ProductDetail> ProductDetails { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Modules> Modules { get; set; }
+        public virtual DbSet<FormDesigns> FormDesigns { get; set; }
     }
 }

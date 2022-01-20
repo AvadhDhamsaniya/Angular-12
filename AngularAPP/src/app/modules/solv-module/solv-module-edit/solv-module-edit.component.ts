@@ -2,7 +2,10 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs';
+import { FormDesign } from 'src/app/model/formDesign';
 import { CommonService } from 'src/app/services/common.service';
+import { FormDesignService } from 'src/app/services/form-design.service';
 import { SolvModuleService } from 'src/app/services/solv-module.service';
 
 @Component({
@@ -10,8 +13,7 @@ import { SolvModuleService } from 'src/app/services/solv-module.service';
   templateUrl: './solv-module-edit.component.html',
   styleUrls: ['./solv-module-edit.component.css',
     '../../../../styles/bootstrap.css',
-    '../../../../styles/bootstrap-theme.css'],
-  encapsulation: ViewEncapsulation.None
+    '../../../../styles/bootstrap-theme.css']
 })
 export class SolvModuleEditComponent implements OnInit {
 
@@ -28,13 +30,16 @@ export class SolvModuleEditComponent implements OnInit {
     }
   );
 
+  formDesignList: FormDesign[] = [];
+
   @ViewChild(MatMenuTrigger) ddTrigger!: MatMenuTrigger;
 
   constructor(
     private commonService: CommonService,
     private activatedRoute: ActivatedRoute,
     private solvModuleService: SolvModuleService,
-    private router: Router
+    private router: Router,
+    private formDesignService: FormDesignService
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +50,13 @@ export class SolvModuleEditComponent implements OnInit {
         (data) => {
           this.moduleFormGroup.patchValue(data);
         });
+      this.formDesignService.getAll(this.moduleId).pipe(
+        map((res: any) => {
+          if (res) {
+            this.formDesignList = res;
+          }
+        })
+      ).subscribe();
     }
     else {
       this.moduleFormGroup.controls["icon"].setValue(this.iconList[0]);
@@ -92,5 +104,9 @@ export class SolvModuleEditComponent implements OnInit {
 
   goToModuleList(res: any) {
     this.router.navigateByUrl("/module");
+  }
+
+  addNewForm() {
+    this.router.navigateByUrl("/form/formdesign/0/" + this.moduleId);
   }
 }

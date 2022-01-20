@@ -33,3 +33,12 @@
 .form-element {
     padding: 0px;
 }
+
+.btn-custom-primary,.btn-custom-secondary{
+    line-height: 36px;
+    width:14%;
+}
+
+a{
+color: #673ab7 !important;
+}
