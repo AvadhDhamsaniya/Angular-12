@@ -32,7 +32,7 @@ namespace DemoProjectAPI.Controllers
             Category category = new Category();
             PropertyInfo propertyInfo = category.GetType().GetProperties().FirstOrDefault(x => x.Name.ToLower() == sortModel.SortBy.ToLower());
 
-            List<Category> listOfCategory = _categorySetvice.GetAll().ToList();
+            List<Category> listOfCategory = _categorySetvice.GetAll(UserId).ToList();
             if(propertyInfo != null)
             {
                 if (sortModel.SortDirection == "desc")

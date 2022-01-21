@@ -19,7 +19,7 @@
     margin-right:5px;
 }
 
-.mat-menu-panel{
+::ng-deep .icon-list{
     padding:15px;
     height: 245px;
 }

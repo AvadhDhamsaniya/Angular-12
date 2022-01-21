@@ -7,6 +7,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { FormDesignService } from 'src/app/services/form-design.service';
 import { map } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
+import { FormDesign } from 'src/app/model/formDesign';
 
 @Component({
   selector: 'app-form-design-add-edit',
@@ -30,6 +31,7 @@ export class FormDesignAddEditComponent implements OnInit {
   formName: string = "";
   moduleId: number = 0;
   formDesignId: number = 0;
+  isDraft: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -53,6 +55,15 @@ export class FormDesignAddEditComponent implements OnInit {
   ngOnInit(): void {
     this.moduleId = parseInt(this.activatedRoute.snapshot.paramMap.get("moduleId") || "0");
     this.formDesignId = parseInt(this.activatedRoute.snapshot.paramMap.get("id") || "0");
+    if (this.formDesignId > 0) {
+      this.formDesignService.getFormDesignDetail(this.formDesignId).pipe(
+        map((res: FormDesign) => {
+          this.formName = res.formName;
+          this.designData = JSON.parse(res.designData);
+          this.isDraft = res.isDraft;
+        })
+      ).subscribe();
+    }
   }
 
   drop(event: any) {
@@ -93,23 +104,30 @@ export class FormDesignAddEditComponent implements OnInit {
   }
 
   saveFormDesign(isDraft: boolean) {
-    var model = {
-      id: 0,
-      isDraft: false,
-      formName: this.formName,
-      moduleId: this.moduleId,
-      designData: JSON.stringify(this.designData)
-    };
-    this.formDesignService.addFormDesign(model).pipe(
-      map((res: any) => {
-        if (res) {
-          var snackBarRef = this.commonServices.showSnakBar("Form successfully created.", "success");
-          snackBarRef.afterDismissed().subscribe(() => {
-            this.goToModuleDetail();
-          });
-        }
-      })
-    ).subscribe();
+    var model = new FormDesign();
+    model.id = this.formDesignId;
+    model.formName = this.formName;
+    model.isDraft = isDraft;
+    model.moduleId = this.moduleId;
+    model.designData = JSON.stringify(this.designData);
+
+    if (model.formName.trim() != "") {
+      var service = model.id > 0 ? this.formDesignService.editFormDesign(model) : this.formDesignService.addFormDesign(model);
+      var successMsg = model.id > 0 ? "Form design successfully updated." : "Form design successfully created.";
+      service.pipe(
+        map((res: any) => {
+          if (res) {
+            var snackBarRef = this.commonServices.showSnakBar(successMsg, "success");
+            snackBarRef.afterDismissed().subscribe(() => {
+              this.goToModuleDetail();
+            });
+          }
+        })
+      ).subscribe();
+    }
+    else {
+      this.commonServices.showSnakBar("Form name is required.", "error");
+    }
   }
 
   goToModuleDetail() {

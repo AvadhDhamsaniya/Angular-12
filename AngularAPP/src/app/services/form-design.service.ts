@@ -13,11 +13,11 @@ export class FormDesignService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  addFormDesign(model: any): Observable<boolean> {
+  addFormDesign(model: FormDesign): Observable<boolean> {
     return this._httpClient.post<boolean>(this.baseUrl + "add", model);
   }
 
-  editFormDesign(model: any): Observable<boolean> {
+  editFormDesign(model: FormDesign): Observable<boolean> {
     return this._httpClient.post<boolean>(this.baseUrl + "update", model);
   }
 

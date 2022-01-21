@@ -28,8 +28,8 @@
                 <div>
                     <button mat-raised-button color="primary" type="button" class="button btn-custom-primary"
                         (click)="saveFormDesign(false)">Save</button>
-                    <button mat-raised-button color="primary" type="button" class="button btn-custom-primary"
-                        (click)="saveFormDesign(true)">Save As
+                    <button *ngIf="isDraft" mat-raised-button color="primary" type="button"
+                        class="button btn-custom-primary" (click)="saveFormDesign(true)">Save As
                         Draft</button>
                     <button mat-raised-button color="danger" type="button" class="button btn-custom-secondary"
                         (click)="goToModuleDetail()">Cancel</button>

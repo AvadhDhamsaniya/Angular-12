@@ -56,7 +56,7 @@ namespace DemoProjectAPI.Controllers
         [Route("api/formdesign/get-all/{moduleId}")]
         public IActionResult GetAllFormDesign(int moduleId)
         {
-            List<FormDesigns> listOfFormDesign = _formDesignServices.GetAll().Where(fd => fd.ModuleId == moduleId).ToList();
+            List<FormDesigns> listOfFormDesign = _formDesignServices.GetAll(UserId).Where(fd => fd.ModuleId == moduleId).ToList();
             return Ok(listOfFormDesign);
         }
 

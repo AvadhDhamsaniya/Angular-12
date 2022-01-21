@@ -5,6 +5,12 @@
     <a mat-button [routerLink]="['/product']">Product</a>
     <a mat-button [routerLink]="['/category']">Category</a>
     <a mat-button [routerLink]="['/module']">Module</a>
+    <button mat-button [matMenuTriggerFor]="menu" (click)="loadModuleList()">Event</button>
+    <mat-menu #menu="matMenu" class="module-list">
+        <ng-container *ngFor="let module of moduleList">
+            <button mat-menu-item (click)="createEvent(module)">Add new {{module.name}}</button>
+        </ng-container>
+    </mat-menu>
     <a mat-button (click)="logout()">
         <mat-icon title="Logout">logout</mat-icon>
     </a>

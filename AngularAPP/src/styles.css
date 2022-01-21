@@ -80,11 +80,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .mr-5{
-  margin-right: 5px;
+  margin-right: 5px !important;
 }
 
 .mb-5{
-  margin-bottom: 5px;
+  margin-bottom: 5px !important;
 }
 
 .mb-20{

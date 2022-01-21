@@ -6,8 +6,9 @@ import { FormDesignAddEditComponent } from './form-design-add-edit/form-design-a
 import { MaterialsModule } from '../materials/materials.module';
 import { PipeModule } from 'src/app/pipe/pipe.module';
 import { NgJsonEditorModule } from 'ang-jsoneditor';
-import { FormPluginDesignComponent } from './form-plugin-design/form-plugin-design.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+import { FormPluginDesignComponent } from './form-plugin-design/form-plugin-design.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PipeModule,
     NgJsonEditorModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class FormDesignModule { }

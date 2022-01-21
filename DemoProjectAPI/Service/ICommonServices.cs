@@ -7,7 +7,7 @@ namespace DemoProjectAPI.Model.Repository
 {
     public interface ICommonServices<TEntity>
     {
-        IEnumerable<TEntity> GetAll();
+        IEnumerable<TEntity> GetAll(int? userId = null);
         TEntity Get(int id);
         void Add(TEntity entity);
         void Update(TEntity entity);

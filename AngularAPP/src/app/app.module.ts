@@ -14,7 +14,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CommonModule } from '@angular/common';
-import { PipeModule } from './pipe/pipe.module';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { PipeModule } from './pipe/pipe.module';
     NgxDropzoneModule,
     Ng2SearchPipeModule,
     CommonModule,
-    PipeModule
+    MatMenuModule
   ],
   exports: [MaterialsModule],
   providers: [{

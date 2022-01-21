@@ -34,9 +34,9 @@ namespace DemoProjectAPI.Service
             return _demoDbContext.ProductDetails.Include(p => p.Category).FirstOrDefault(p => p.Id == id && !p.DeletedAt.HasValue);
         }
 
-        public IEnumerable<ProductDetail> GetAll()
+        public IEnumerable<ProductDetail> GetAll(int? userId = null)
         {
-            return _demoDbContext.ProductDetails.Include(p => p.Category).Where(c => !c.DeletedAt.HasValue).ToList();
+            return _demoDbContext.ProductDetails.Include(p => p.Category).Where(c => (!userId.HasValue || c.CreatedBy == userId.Value) && !c.DeletedAt.HasValue).ToList();
         }
 
         public void Update(ProductDetail entity)

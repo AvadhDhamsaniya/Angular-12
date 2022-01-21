@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { CommonService } from './services/common.service';
 import { LoaderService } from './services/loader.service';
 
 @Component({
@@ -8,8 +9,13 @@ import { LoaderService } from './services/loader.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private loaderService: LoaderService, private authService: AuthService) {
+  constructor(
+    private loaderService: LoaderService,
+    private authService: AuthService,
+    private commonService: CommonService
+  ) {
   }
   loader = this.loaderService.loader;
   isLoggedIn = this.authService.isLoggedIn;
+  hasToolbar = this.commonService.hasToolbar;
 }

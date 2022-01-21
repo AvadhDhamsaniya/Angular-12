@@ -1,4 +1,4 @@
-import { Component, ElementRef, Inject, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
@@ -8,8 +8,7 @@ import { SolvModuleService } from 'src/app/services/solv-module.service';
 @Component({
   selector: 'app-solv-module-add',
   templateUrl: './solv-module-add.component.html',
-  styleUrls: ['./solv-module-add.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./solv-module-add.component.css']
 })
 export class SolvModuleAddComponent implements OnInit {
 

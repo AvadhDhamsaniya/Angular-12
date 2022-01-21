@@ -40,9 +40,9 @@ namespace DemoProjectAPI.Service
             return _demoDbContext.Categories.Include(c => c.ProductDetails).FirstOrDefault(c => c.Id == id && !c.DeletedAt.HasValue);
         }
 
-        public IEnumerable<Category> GetAll()
+        public IEnumerable<Category> GetAll(int? userId = null)
         {
-            return _demoDbContext.Categories.Where(c => !c.DeletedAt.HasValue).ToList();
+            return _demoDbContext.Categories.Where(c => (!userId.HasValue || c.CreatedBy == userId.Value) && !c.DeletedAt.HasValue).ToList();
         }
 
         public void Update(Category entity)

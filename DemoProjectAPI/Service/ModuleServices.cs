@@ -35,9 +35,9 @@ namespace DemoProjectAPI.Service
             return _demoDbContext.Modules.FirstOrDefault(m => m.Id == id && !m.DeletedAt.HasValue);
         }
 
-        public IEnumerable<Modules> GetAll()
+        public IEnumerable<Modules> GetAll(int? userId = null)
         {
-            return _demoDbContext.Modules.Where(m => !m.DeletedAt.HasValue).ToList();
+            return _demoDbContext.Modules.Where(m => (!userId.HasValue || m.CreatedBy == userId.Value) && !m.DeletedAt.HasValue).ToList();
         }
 
         public void Update(Modules entity)

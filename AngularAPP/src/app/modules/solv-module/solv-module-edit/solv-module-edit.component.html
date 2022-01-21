@@ -17,7 +17,7 @@
                         </div>
                     </div>
 
-                    <mat-menu #dd="matMenu" [overlapTrigger]="false">
+                    <mat-menu #dd="matMenu" [overlapTrigger]="false" class="icon-list">
                         <div (click)="cancelClick($event)" class="dropdown">
                             <mat-form-field class="form-element" style="padding-bottom: 0px;">
                                 <input matInput placeholder="Search icons" [(ngModel)]="searchIconText"
@@ -92,17 +92,24 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <ng-container *ngIf="formDesignList.length == 0">
+                                <tr class="text-center">
+                                    <td colspan="3">There are no templates...</td>
+                                </tr>
+                            </ng-container>
                             <ng-container *ngFor="let formDesign of formDesignList">
                                 <tr>
                                     <td>{{formDesign.formName}}</td>
-                                    <td>{{formDesign.isDraft ? "InActive":"Active"}}</td>
+                                    <td>{{formDesign.isDraft ? "Draft":"Active"}}</td>
                                     <td class="text-end">
                                         <a class="mr-5">
-                                            <mat-icon class="delete" style="margin-top:-3px" title="Edit Module">
+                                            <mat-icon class="delete" style="margin-top:-3px" title="Edit Form Design"
+                                                (click)="editFormDesign(formDesign.id)">
                                                 edit</mat-icon>
                                         </a>
                                         <a class="mr-5">
-                                            <mat-icon class="delete" style="margin-top:-3px" title="Edit Module">
+                                            <mat-icon class="delete" style="margin-top:-3px" title="Delete Form Design"
+                                                (click)="deleteFormDesign(formDesign.id)">
                                                 delete</mat-icon>
                                         </a>
                                     </td>

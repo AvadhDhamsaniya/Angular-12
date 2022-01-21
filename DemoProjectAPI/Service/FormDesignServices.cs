@@ -1,6 +1,7 @@
 ﻿using DemoProjectAPI.Model;
 using DemoProjectAPI.Model.Model;
 using DemoProjectAPI.Model.Repository;
+using DemoProjectAPI.Service.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DemoProjectAPI.Service
 {
-    public class FormDesignServices : ICommonServices<FormDesigns>
+    public class FormDesignServices : IFormDesignServices
     {
         private readonly DemoDbContext _demoDbContext;
         public FormDesignServices(DemoDbContext demoDbContext)
@@ -35,9 +36,9 @@ namespace DemoProjectAPI.Service
             return _demoDbContext.FormDesigns.FirstOrDefault(m => m.Id == id && !m.DeletedAt.HasValue);
         }
 
-        public IEnumerable<FormDesigns> GetAll()
+        public IEnumerable<FormDesigns> GetAll(int? userId = null)
         {
-            return _demoDbContext.FormDesigns.Where(m => !m.DeletedAt.HasValue).ToList();
+            return _demoDbContext.FormDesigns.Where(m => (!userId.HasValue || m.CreatedBy == userId.Value) && !m.DeletedAt.HasValue).ToList();
         }
 
         public void Update(FormDesigns entity)
@@ -49,6 +50,11 @@ namespace DemoProjectAPI.Service
             model.UpdatedBy = entity.UpdatedBy;
             model.UpdatedDate = entity.UpdatedDate;
             _demoDbContext.SaveChanges();
+        }
+
+        public FormDesigns GetFirstFormOfModule(int moduleId)
+        {
+            return _demoDbContext.FormDesigns.FirstOrDefault(fd => fd.ModuleId == moduleId && !fd.IsDraft && !fd.DeletedAt.HasValue);
         }
     }
 }

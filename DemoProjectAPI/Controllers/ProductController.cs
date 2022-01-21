@@ -35,7 +35,7 @@ namespace DemoProjectAPI.Controllers
             ProductDetail productDetail = new ProductDetail();
             PropertyInfo propertyInfo = productDetail.GetType().GetProperties().FirstOrDefault(x => x.Name.ToLower() == sortModel.SortBy.ToLower());
 
-            List<ProductDetail> listOfProducts = _productSetvice.GetAll().Where(x =>
+            List<ProductDetail> listOfProducts = _productSetvice.GetAll(UserId).Where(x =>
             x.Name.ToLower().Contains(sortModel.SearchText.ToLower()) ||
             x.Description.ToLower().Contains(sortModel.SearchText.ToLower()) ||
             x.CategoryName.ToLower().Contains(sortModel.SearchText.ToLower())

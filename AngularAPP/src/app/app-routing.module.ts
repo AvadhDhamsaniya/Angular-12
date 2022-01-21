@@ -33,9 +33,15 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "form",
+    path: "formdesign",
     loadChildren: () => import('./modules/form-design/form-design.module')
       .then(mod => mod.FormDesignModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "form",
+    loadChildren: () => import('./modules/form-fill/form-fill.module')
+      .then(mod => mod.FormFillModule),
     canActivate: [AuthGuard]
   }
 ];

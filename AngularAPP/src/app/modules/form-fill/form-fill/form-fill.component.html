@@ -1,0 +1,10 @@
+<div class="container container-custom">
+    <div class="row">
+        <div class="col-md-12">
+            <ng-container *ngFor="let plugin of designData">
+                <app-form-fill-plugin-template [data]="plugin">
+                </app-form-fill-plugin-template>
+            </ng-container>
+        </div>
+    </div>
+</div>

@@ -55,7 +55,7 @@ namespace DemoProjectAPI.Controllers
         [Route("api/module/get-all")]
         public IActionResult GetAllModule()
         {
-            List<Modules> listOfModule = _moduleService.GetAll().ToList();
+            List<Modules> listOfModule = _moduleService.GetAll(UserId).ToList();
             return Ok(listOfModule);
         }
 
