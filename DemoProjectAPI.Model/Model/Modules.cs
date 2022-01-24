@@ -20,5 +20,7 @@ namespace DemoProjectAPI.Model.Model
         public bool IsActive { get; set; }
 
         public ICollection<FormDesigns> FormDesigns { get; set; }
+
+        public ICollection<Events> Events { get; set; }
     }
 }

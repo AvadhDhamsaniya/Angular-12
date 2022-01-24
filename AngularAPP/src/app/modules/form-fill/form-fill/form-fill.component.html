@@ -5,6 +5,16 @@
                 <app-form-fill-plugin-template [data]="plugin">
                 </app-form-fill-plugin-template>
             </ng-container>
+            <div class="row mt-20">
+                <div class="col-md-12 text-center">
+                    <button mat-raised-button color="primary" type="button" class="button btn-custom-primary"
+                        (click)="saveForm(false)">Save</button>
+                    <button mat-raised-button color="primary" type="button" class="button btn-custom-primary"
+                        (click)="saveForm(true)">Save As Draft</button>
+                    <button mat-raised-button color="danger" type="button" class="button btn-custom-secondary"
+                        (click)="goToPreviousRoute()">Cancel</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

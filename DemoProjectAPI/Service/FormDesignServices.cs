@@ -31,6 +31,18 @@ namespace DemoProjectAPI.Service
             Update(model);
         }
 
+        public void DeleteByModule(int moduleId, int userId)
+        {
+            List<FormDesigns> designs = GetFormDesignsByModule(moduleId).ToList();
+            designs.ForEach(fd => {
+                fd.DeletedAt = DateTime.Now;
+                fd.DeletedBy = userId;
+            });
+
+            _demoDbContext.FormDesigns.UpdateRange(designs);
+            _demoDbContext.SaveChanges();
+        }
+
         public FormDesigns Get(int id)
         {
             return _demoDbContext.FormDesigns.FirstOrDefault(m => m.Id == id && !m.DeletedAt.HasValue);
@@ -55,6 +67,11 @@ namespace DemoProjectAPI.Service
         public FormDesigns GetFirstFormOfModule(int moduleId)
         {
             return _demoDbContext.FormDesigns.FirstOrDefault(fd => fd.ModuleId == moduleId && !fd.IsDraft && !fd.DeletedAt.HasValue);
+        }
+
+        public IQueryable<FormDesigns> GetFormDesignsByModule(int moduleId)
+        {
+            return _demoDbContext.FormDesigns.Where(fd => fd.ModuleId == moduleId && !fd.DeletedAt.HasValue);
         }
     }
 }

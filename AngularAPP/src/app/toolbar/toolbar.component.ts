@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { ModuleClass } from '../model/module';
 import { AuthService } from '../services/auth.service';
-import { CommonService } from '../services/common.service';
 import { SolvModuleService } from '../services/solv-module.service';
 
 @Component({
@@ -18,9 +17,7 @@ export class ToolbarComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private moduleService: SolvModuleService,
-    private commonService: CommonService
-  ) { }
+    private moduleService: SolvModuleService) { }
 
   ngOnInit(): void {
   }

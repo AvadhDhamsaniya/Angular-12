@@ -34,5 +34,12 @@ namespace DemoProjectAPI.Controllers
             FormDesigns formDesigns = _formDesignServices.GetFirstFormOfModule(moduleId);
             return Ok(formDesigns);
         }
+
+        [HttpPost]
+        [Route("api/formanswer/create/{moduleId}")]
+        public IActionResult Create(int moduleId, FormAnswers formAnswer)
+        {
+            return Ok();
+        }
     }
 }

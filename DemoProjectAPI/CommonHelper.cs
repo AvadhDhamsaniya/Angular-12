@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DemoProjectAPI.Model;
+using DemoProjectAPI.Model.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

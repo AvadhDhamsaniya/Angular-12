@@ -133,10 +133,10 @@ D:\Projects\Angular 12 Demo\DemoProjectAPI.Model\bin\Debug\netcoreapp3.1\runtime
 D:\Projects\Angular 12 Demo\DemoProjectAPI.Model\obj\Debug\netcoreapp3.1\DemoProjectAPI.Model.csprojAssemblyReference.cache
 D:\Projects\Angular 12 Demo\DemoProjectAPI.Model\obj\Debug\netcoreapp3.1\staticwebassets\DemoProjectAPI.Model.StaticWebAssets.Manifest.cache
 D:\Projects\Angular 12 Demo\DemoProjectAPI.Model\obj\Debug\netcoreapp3.1\staticwebassets\DemoProjectAPI.Model.StaticWebAssets.xml
-D:\Projects\Angular 12 Demo\DemoProjectAPI.Model\obj\Debug\netcoreapp3.1\DemoProjectAPI.Model.MvcApplicationPartsAssemblyInfo.cache
 D:\Projects\Angular 12 Demo\DemoProjectAPI.Model\obj\Debug\netcoreapp3.1\DemoProjectAPI.Model.AssemblyInfoInputs.cache
 D:\Projects\Angular 12 Demo\DemoProjectAPI.Model\obj\Debug\netcoreapp3.1\DemoProjectAPI.Model.AssemblyInfo.cs
 D:\Projects\Angular 12 Demo\DemoProjectAPI.Model\obj\Debug\netcoreapp3.1\DemoProjectAPI.Model.RazorTargetAssemblyInfo.cache
 D:\Projects\Angular 12 Demo\DemoProjectAPI.Model\obj\Debug\netcoreapp3.1\DemoProjectAPI.Model.csproj.CopyComplete
 D:\Projects\Angular 12 Demo\DemoProjectAPI.Model\obj\Debug\netcoreapp3.1\DemoProjectAPI.Model.dll
 D:\Projects\Angular 12 Demo\DemoProjectAPI.Model\obj\Debug\netcoreapp3.1\DemoProjectAPI.Model.pdb
+D:\Projects\Angular 12 Demo\DemoProjectAPI.Model\obj\Debug\netcoreapp3.1\DemoProjectAPI.Model.MvcApplicationPartsAssemblyInfo.cache

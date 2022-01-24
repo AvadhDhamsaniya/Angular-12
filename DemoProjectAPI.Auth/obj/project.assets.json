@@ -2797,6 +2797,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.13",
           "Microsoft.EntityFrameworkCore": "5.0.13",
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.13",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.13"
         },
         "compile": {

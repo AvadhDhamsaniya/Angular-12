@@ -1,5 +1,6 @@
 ﻿using DemoProjectAPI.Model.Model;
 using DemoProjectAPI.Model.Repository;
+using DemoProjectAPI.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -14,10 +15,10 @@ namespace DemoProjectAPI.Controllers
     [Authorize(AuthenticationSchemes = "Bearer")]
     public class FormDesignController : BaseAPIController
     {
-        private readonly ICommonServices<FormDesigns> _formDesignServices;
+        private readonly IFormDesignServices _formDesignServices;
 
         public FormDesignController(
-            ICommonServices<FormDesigns> formDesignServices,
+            IFormDesignServices formDesignServices,
             UserManager<User> userManager,
             IHttpContextAccessor httpContextAccessor) : base(userManager, httpContextAccessor)
         {
@@ -56,7 +57,7 @@ namespace DemoProjectAPI.Controllers
         [Route("api/formdesign/get-all/{moduleId}")]
         public IActionResult GetAllFormDesign(int moduleId)
         {
-            List<FormDesigns> listOfFormDesign = _formDesignServices.GetAll(UserId).Where(fd => fd.ModuleId == moduleId).ToList();
+            List<FormDesigns> listOfFormDesign = _formDesignServices.GetFormDesignsByModule(moduleId).ToList();
             return Ok(listOfFormDesign);
         }
 

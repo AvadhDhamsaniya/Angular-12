@@ -10,5 +10,9 @@ namespace DemoProjectAPI.Service.Interface
     public interface IFormDesignServices : ICommonServices<FormDesigns>
     {
         FormDesigns GetFirstFormOfModule(int moduleId);
+
+        void DeleteByModule(int moduleId, int userId);
+
+        IQueryable<FormDesigns> GetFormDesignsByModule(int moduleId)
     }
 }

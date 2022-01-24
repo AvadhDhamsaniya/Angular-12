@@ -1,5 +1,6 @@
 ﻿using DemoProjectAPI.Model.Model;
 using DemoProjectAPI.Model.Repository;
+using DemoProjectAPI.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -15,18 +16,22 @@ namespace DemoProjectAPI.Controllers
     public class ModuleController : BaseAPIController
     {
         public readonly ICommonServices<Modules> _moduleService;
+        public readonly ICommonHelperServices _commonHelperServices;
         public ModuleController(
             ICommonServices<Modules> moduleService,
+            ICommonHelperServices commonHelperServices,
             UserManager<User> userManager,
             IHttpContextAccessor httpContextAccessor) : base(userManager, httpContextAccessor)
         {
             _moduleService = moduleService;
+            _commonHelperServices = commonHelperServices;
         }
 
         [HttpDelete]
         [Route("api/module/delete/{id}")]
         public IActionResult DeleteModule(int id)
         {
+            _commonHelperServices.RemoveModuleSequence(id);
             _moduleService.Delete(id, UserId);
             return Ok(true);
         }
@@ -38,6 +43,10 @@ namespace DemoProjectAPI.Controllers
             model.CreatedBy = UserId;
             model.CreatedDate = DateTime.Now;
             _moduleService.Add(model);
+            if(model.Id > 0)
+            {
+                _commonHelperServices.GenerateModuleSequence(model.Id);
+            }
             return Ok(true);
         }
 

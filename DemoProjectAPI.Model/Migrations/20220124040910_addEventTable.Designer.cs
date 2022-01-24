@@ -4,14 +4,16 @@ using DemoProjectAPI.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DemoProjectAPI.Model.Migrations
 {
     [DbContext(typeof(DemoDbContext))]
-    partial class DemoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220124040910_addEventTable")]
+    partial class addEventTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,52 +108,6 @@ namespace DemoProjectAPI.Model.Migrations
                     b.HasIndex("ModuleId");
 
                     b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("DemoProjectAPI.Model.Model.FormAnswers", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AnswerData")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EventId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FormDesignId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDraft")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("UpdatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventId");
-
-                    b.HasIndex("FormDesignId");
-
-                    b.ToTable("FormAnswers");
                 });
 
             modelBuilder.Entity("DemoProjectAPI.Model.Model.FormDesigns", b =>
@@ -510,25 +466,6 @@ namespace DemoProjectAPI.Model.Migrations
                     b.Navigation("Modules");
                 });
 
-            modelBuilder.Entity("DemoProjectAPI.Model.Model.FormAnswers", b =>
-                {
-                    b.HasOne("DemoProjectAPI.Model.Model.Events", "Events")
-                        .WithMany("FormAnswers")
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DemoProjectAPI.Model.Model.FormDesigns", "FormDesigns")
-                        .WithMany("FormAnswers")
-                        .HasForeignKey("FormDesignId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Events");
-
-                    b.Navigation("FormDesigns");
-                });
-
             modelBuilder.Entity("DemoProjectAPI.Model.Model.FormDesigns", b =>
                 {
                     b.HasOne("DemoProjectAPI.Model.Model.Modules", "Modules")
@@ -603,16 +540,6 @@ namespace DemoProjectAPI.Model.Migrations
             modelBuilder.Entity("DemoProjectAPI.Model.Category", b =>
                 {
                     b.Navigation("ProductDetails");
-                });
-
-            modelBuilder.Entity("DemoProjectAPI.Model.Model.Events", b =>
-                {
-                    b.Navigation("FormAnswers");
-                });
-
-            modelBuilder.Entity("DemoProjectAPI.Model.Model.FormDesigns", b =>
-                {
-                    b.Navigation("FormAnswers");
                 });
 
             modelBuilder.Entity("DemoProjectAPI.Model.Model.Modules", b =>
