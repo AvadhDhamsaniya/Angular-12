@@ -1,4 +1,5 @@
 ﻿using DemoProjectAPI.Model;
+using DemoProjectAPI.Model.Model;
 using DemoProjectAPI.Service.Interface;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,12 @@ namespace DemoProjectAPI.Service
         public FormAnswerServices(DemoDbContext demoDbContext)
         {
             _demoDbContext = demoDbContext;
+        }
+
+        public void Create(FormAnswers formAnswers)
+        {
+            _demoDbContext.FormAnswers.Add(formAnswers);
+            _demoDbContext.SaveChanges();
         }
     }
 }

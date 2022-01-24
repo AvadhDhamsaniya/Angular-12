@@ -1,8 +1,29 @@
-<div class="mt-10 mb-10">
-    <ng-container *ngIf="plugin.type=='Text'">
-        <input class="custom-form-control" placeholder="{{plugin.label}}" autocomplete="off">
-    </ng-container>
-    <ng-container *ngIf="plugin.type=='Textarea'">
-        <textarea row="2" class="custom-form-control" placeholder="{{plugin.label}}" autocomplete="off"></textarea>
-    </ng-container>
-</div>
+<form [formGroup]="fillFormGroup" class="form" #formFill="ngForm">
+    <div class="row">
+        <div class="col-md-12">
+            <ng-container *ngFor="let plugin of designData">
+                <div class="mt-10 mb-10">
+                    <ng-container *ngIf="plugin.type=='Text'">
+                        <mat-form-field class="form-element">
+                            <input matInput class="custom-form-control" formControlName="{{plugin.bind}}"
+                                name="{{plugin.bind}}" placeholder="{{plugin.label}}" autocomplete="off">
+                            <!-- <mat-error *ngIf="moduleFormGroup.hasError('required','prefix')">
+                                Please enter prefix
+                            </mat-error>
+                            <mat-error *ngIf="moduleFormGroup.hasError('maxlength','prefix')">
+                                Please enter valid prefix
+                            </mat-error> -->
+                        </mat-form-field>
+                    </ng-container>
+                    <ng-container *ngIf="plugin.type=='Textarea'">
+                        <mat-form-field class="form-element">
+                            <textarea matInput matTextareaAutosize rows="2" formControlName="{{plugin.bind}}"
+                                name="{{plugin.bind}}" placeholder="{{plugin.label}}" matAutosizeMinRows="5"
+                                matAutosizeMaxRows="5" autocomplete="off"></textarea>
+                        </mat-form-field>
+                    </ng-container>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</form>

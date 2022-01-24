@@ -13,6 +13,6 @@ namespace DemoProjectAPI.Service.Interface
 
         void DeleteByModule(int moduleId, int userId);
 
-        IQueryable<FormDesigns> GetFormDesignsByModule(int moduleId)
+        IQueryable<FormDesigns> GetFormDesignsByModule(int moduleId);
     }
 }

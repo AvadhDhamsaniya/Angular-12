@@ -19,12 +19,24 @@ namespace DemoProjectAPI.Controllers
     public class FormAnswerController : BaseAPIController
     {
         private readonly IFormDesignServices _formDesignServices;
+        private readonly ICommonHelperServices _commonHelperServices;
+        private readonly ICommonServices<Modules> _moduleService;
+        private readonly IEventServices _eventServices;
+        private readonly IFormAnswerServices _formAnswerServices;
         public FormAnswerController(
             IFormDesignServices formDesignServices,
+            ICommonHelperServices commonHelperServices,
+            ICommonServices<Modules> moduleService,
+            IFormAnswerServices formAnswerServices,
+            IEventServices eventServices,
             UserManager<User> userManager,
             IHttpContextAccessor httpContextAccessor) : base(userManager, httpContextAccessor)
         {
             _formDesignServices = formDesignServices;
+            _commonHelperServices = commonHelperServices;
+            _moduleService = moduleService;
+            _eventServices = eventServices;
+            _formAnswerServices = formAnswerServices;
         }
 
         [HttpGet]
@@ -37,9 +49,38 @@ namespace DemoProjectAPI.Controllers
 
         [HttpPost]
         [Route("api/formanswer/create/{moduleId}")]
-        public IActionResult Create(int moduleId, FormAnswers formAnswer)
+        public async Task<IActionResult> Create(int moduleId, FormAnswers formAnswer)
         {
+            //Events ev = null;
+            //if(formAnswer.EventId == 0)
+            //{
+            //    ev = await CreateEvent(moduleId);
+            //}
+            //if(ev != null)
+            //{
+            //    formAnswer.EventId = ev.Id;
+            //    formAnswer.CreatedBy = UserId;
+            //    formAnswer.CreatedDate = DateTime.Now;
+            //    _formAnswerServices.Create(formAnswer);
+            //}
             return Ok();
+        }
+
+        private async Task<Events> CreateEvent(int moduleId)
+        {
+            Modules module = _moduleService.Get(moduleId);
+            string uniqueId = await _commonHelperServices.GenerateUniqueId(module);
+            Events ev = new Events()
+            {
+                ModuleId = moduleId,
+                UniqueId = uniqueId,
+                EventDate = DateTime.Now,
+                Title = uniqueId+": "+module.Name,
+                CreatedBy = UserId,
+                CreatedDate = DateTime.Now
+            };
+            _eventServices.CreateEvent(ev);
+            return ev;
         }
     }
 }

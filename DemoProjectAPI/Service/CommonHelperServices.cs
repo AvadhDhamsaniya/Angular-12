@@ -2,6 +2,7 @@
 using DemoProjectAPI.Model.Model;
 using DemoProjectAPI.Service.Interface;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace DemoProjectAPI.Service
 {
@@ -13,14 +14,14 @@ namespace DemoProjectAPI.Service
             _demoDbContext = demoDbContext;
         }
 
-        public string GenerateUniqueId(Modules module)
+        public async Task<string> GenerateUniqueId(Modules module)
         {
             // get sequence name
             string sequenceName = string.Format("SEQ_{0}", module.Id);
 
             // get next sequence value 
             string query = "SELECT NEXT VALUE FOR [" + sequenceName + "];";
-            var result = _demoDbContext.ExecuteSqlCommand(query);
+            var result = await _demoDbContext.ExecuteSqlCommand(query);
 
             // return event unique id 
             string uniqueString = string.Format("{0}-{1}", module.Prefix, result.ToString());

@@ -8,7 +8,7 @@ namespace DemoProjectAPI.Service.Interface
 {
     public interface ICommonHelperServices
     {
-        string GenerateUniqueId(Modules module);
+        Task<string> GenerateUniqueId(Modules module);
 
         void GenerateModuleSequence(int modeulId);
 

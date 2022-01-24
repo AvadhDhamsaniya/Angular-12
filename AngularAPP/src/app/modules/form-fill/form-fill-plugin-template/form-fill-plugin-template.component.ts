@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Element } from 'src/app/model/element';
 
 @Component({
@@ -6,17 +7,10 @@ import { Element } from 'src/app/model/element';
   templateUrl: './form-fill-plugin-template.component.html',
   styleUrls: ['./form-fill-plugin-template.component.css']
 })
-export class FormFillPluginTemplateComponent implements OnInit {
+export class FormFillPluginTemplateComponent {
 
-  plugin!: Element;
-
-  @Input() set data(data: any) {
-    this.plugin = data;
-  }
+  @Input() designData!: Element[];
+  @Input() fillFormGroup!: FormGroup;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
