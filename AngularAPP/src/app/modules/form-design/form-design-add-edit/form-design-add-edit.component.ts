@@ -5,9 +5,10 @@ import { JsonEditorComponent, JsonEditorOptions } from 'ang-jsoneditor';
 import { Guid } from 'guid-typescript';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FormDesignService } from 'src/app/services/form-design.service';
-import { map } from 'rxjs';
+import { count, map } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
 import { FormDesign } from 'src/app/model/formDesign';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-form-design-add-edit',
@@ -48,7 +49,8 @@ export class FormDesignAddEditComponent implements OnInit {
   propertyFormGroup = new FormGroup(
     {
       label: new FormControl(""),
-      reportingLabel: new FormControl("")
+      reportingLabel: new FormControl(""),
+      required: new FormControl(false)
     }
   );
 
@@ -67,14 +69,37 @@ export class FormDesignAddEditComponent implements OnInit {
   }
 
   drop(event: any) {
-    var element = this.elements.find(el => {
-      return el.type == event.item.data.type;
-    });
-    if (element != undefined) {
-      var elementRef = { ...element };
-      var guid = Guid.create();
-      elementRef.elementUniqId = guid['value'];
-      this.designData.push(elementRef);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(this.designData, event.previousIndex, event.currentIndex);
+    } else {
+      var element = this.elements.find(el => {
+        return el.type == event.item.data.type;
+      });
+      if (element != undefined) {
+        var elementRef = { ...element };
+        var guid = Guid.create();
+        elementRef.elementUniqId = guid['value'];
+
+        var count = 0;
+        this.designData.forEach(data => {
+          if (elementRef.type == data.type) {
+            var bindCount = data.bind.replace(elementRef.bind, '');
+            if (/^\d+$/.test(bindCount)) {
+              var num = parseInt(bindCount);
+              if (num > count) {
+                count = num;
+              }
+            }
+            count++;
+          }
+        });
+        if (count > 0) {
+          elementRef.bind = elementRef.bind + count;
+          elementRef.label = elementRef.label + count;
+          elementRef.reportingLabel = elementRef.reportingLabel + count;
+        }
+        this.designData.push(elementRef);
+      }
     }
   }
 
@@ -100,7 +125,16 @@ export class FormDesignAddEditComponent implements OnInit {
     });
     element.label = propertyValues.label;
     element.reportingLabel = propertyValues.reportingLabel;
+    element.required = propertyValues.required;
     this.editor.set(JSON.parse(JSON.stringify(this.designData)));
+  }
+
+  deleteElement() {
+    this.designData = this.designData.filter(el => {
+      return el.elementUniqId != this.selectedField.elementUniqId;
+    });
+    this.selectedField = null;
+    this.propertyIndex = 0;
   }
 
   saveFormDesign(isDraft: boolean) {

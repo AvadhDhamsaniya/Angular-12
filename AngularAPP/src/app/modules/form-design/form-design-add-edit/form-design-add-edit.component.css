@@ -53,3 +53,85 @@ textarea.jsoneditor-text{min-height:350px;}
 .selected-field{
     background-color: #ccb0ff
 }
+
+.btn-custom-primary,.btn-custom-secondary{
+    line-height: 36px;
+    width:150px;
+}
+
+.col-auto {
+    padding: 0 15px 0 15px;
+    float: left;
+}
+
+/* 1 item */
+.col-auto:nth-last-child(1) {
+    width: 100%;
+}
+
+/* 2 items */
+.col-auto:nth-last-child(2),
+.col-auto:nth-last-child(2) ~ .col-auto {
+    width: 50%;
+}
+
+/* 3 items */
+.col-auto:nth-last-child(3),
+.col-auto:nth-last-child(3) ~ .col-auto {
+    width: 33.3333%;
+}
+
+/* 4 items */
+.col-auto:nth-last-child(4),
+.col-auto:nth-last-child(4) ~ .col-auto {
+    width: 25%;
+}
+
+/* 5 items */
+.col-auto:nth-last-child(5),
+.col-auto:nth-last-child(5) ~ .col-auto {
+    width: 20%;
+}
+
+/* 6 items */
+.col-auto:nth-last-child(6),
+.col-auto:nth-last-child(6) ~ .col-auto {
+    width: 16.66666667%;
+}
+
+/* 7 items */
+.col-auto:nth-last-child(7),
+.col-auto:nth-last-child(7) ~ .col-auto {
+    width: 14.285714%;
+}
+
+/* 8 items */
+.col-auto:nth-last-child(8),
+.col-auto:nth-last-child(8) ~ .col-auto {
+    width: 12.5%;
+}
+/* 9 items */
+.col-auto:nth-last-child(9),
+.col-auto:nth-last-child(9) ~ .col-auto {
+    width: 11.111111%;
+}
+/* 10 items */
+.col-auto:nth-last-child(10),
+.col-auto:nth-last-child(10) ~ .col-auto {
+    width: 10%;
+}
+/* 11 items */
+.col-auto:nth-last-child(11),
+.col-auto:nth-last-child(11) ~ .col-auto {
+    width: 9.0909091%;
+}
+/* 12 items */
+.col-auto:nth-last-child(12),
+.col-auto:nth-last-child(12) ~ .col-auto {
+    width: 8.33333333%;
+}
+/* 13 items */
+.col-auto:nth-last-child(13),
+.col-auto:nth-last-child(13) ~ .col-auto {
+    width: 100%;
+}

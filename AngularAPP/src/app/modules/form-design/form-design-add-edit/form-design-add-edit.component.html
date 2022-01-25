@@ -1,13 +1,13 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-7">
             <div class="container-custom">
                 <mat-tab-group class="custom-json-editor" (selectedTabChange)="toggleDesignerEditor($event)">
                     <mat-tab label="Designer">
-                        <div cdkDropList #doneList="cdkDropList" [cdkDropListConnectedTo]="[todoList]"
-                            class="example-list" (cdkDropListDropped)="drop($event)">
+                        <div cdkDropList #designer="cdkDropList" class="row" (cdkDropListDropped)="drop($event)"
+                            style="width: 100%;height:502px;">
                             <ng-container *ngFor="let plugin of designData">
-                                <div class="mt-20 mb-20 p-10 icon-cursor-move"
+                                <div class=" mt-20 mb-20 p-10 icon-cursor-move" cdkDrag [cdkDragData]="plugin"
                                     [ngClass]="{'selected-field':plugin == selectedField}"
                                     (click)="onSelectField(plugin)">
                                     <mat-icon>drag_indicator</mat-icon>
@@ -23,7 +23,7 @@
                 </mat-tab-group>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
             <div class="container-custom">
                 <div>
                     <button mat-raised-button color="primary" type="button" class="button btn-custom-primary"
@@ -39,8 +39,7 @@
                         <mat-tab label="Element">
                             <div class="container-fluid mt-20">
                                 <div class="row">
-                                    <div cdkDropList #todoList="cdkDropList" [cdkDropListConnectedTo]="[doneList]"
-                                        class="example-list" (cdkDropListDropped)="drop($event)">
+                                    <div cdkDropList [cdkDropListConnectedTo]="[designer]">
                                         <ng-container *ngFor="let element of elements">
                                             <div class="col-md-6" cdkDrag [cdkDragData]="element">
                                                 <button mat-raised-button color="primary" type="button"
@@ -69,12 +68,25 @@
                                                 autocomplete="off" (keyup)="onChangeFieldProperties()">
                                         </mat-form-field>
                                     </div>
+                                    <div class="mt-10 form-element">
+                                        Is Required?
+                                        <mat-checkbox color="primary" #tcCheck formControlName="required"
+                                            name="required" class="ml-10" (change)="onChangeFieldProperties()">
+                                        </mat-checkbox>
+                                    </div>
+                                    <div class="row mt-20 mb-20" style="width: 100%;">
+                                        <div class="col-md-12 text-center">
+                                            <button mat-raised-button color="warn" type="button"
+                                                class="button btn-custom-primary" (click)="deleteElement()">
+                                                <mat-icon>delete</mat-icon> Delete Element
+                                            </button>
+                                        </div>
+                                    </div>
                                 </form>
                             </ng-container>
                             <ng-container *ngIf="selectedField == null">
                                 <h3 class="mt-20 text-center">Select an element to begin</h3>
                             </ng-container>
-
                         </mat-tab>
                         <mat-tab label="Form Properties">
                             <div class="mt-10">
